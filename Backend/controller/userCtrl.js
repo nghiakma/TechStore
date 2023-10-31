@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 const uniqid = require("uniqid");
+const asyncHandler = require("express-async-handler");
 
 const createUser = asyncHandler(async (req, res) => {
     /**

@@ -8,6 +8,7 @@ const PORT = 5000;
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const cors = require("cors");
+const authRouter = require("./routes/authRoute");
 
 dbConnect();
 app.use(morgan("dev"));
@@ -15,7 +16,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use("/api/user", authRouter);
 
 
 app.listen(PORT, () => {
