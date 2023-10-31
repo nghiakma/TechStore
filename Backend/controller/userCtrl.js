@@ -21,6 +21,12 @@ const createUser = asyncHandler(async (req, res) => {
       /**
        * TODO:if user found then thow an error: User already exists
        */
-      throw new Error("User Already Exists");
+      throw new Error("Người dùng đã tồn tại");
     }
   });
+
+
+module.exports = {
+    createUser,
+};
+  
