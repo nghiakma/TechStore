@@ -5,7 +5,7 @@ const {
     loginAdmin,
     handleRefreshToken,
     logout,
-    
+    updatedUser
 } = require("../controller/userCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 
@@ -15,5 +15,7 @@ router.post("/login", loginUserCtrl);
 router.post("/admin-login", loginAdmin);
 router.get("/refresh", handleRefreshToken);
 router.get("/logout", logout);
+router.put("/edit-user", authMiddleware, updatedUser);
+router.put("/save-address", authMiddleware, saveAddress);
 
 module.exports = router;

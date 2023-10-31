@@ -17,10 +17,10 @@ const authMiddleware = asyncHandler(async (req, res, next) => {
         next();
       }
     } catch (error) {
-      throw new Error("Not Authorized token expired,Please Login again");
+      throw new Error("Mã thông báo không được ủy quyền đã hết hạn, vui lòng đăng nhập lại");
     }
   } else {
-    throw new Error("THere is no token attached to header");
+    throw new Error("Không có mã thông báo nào được đính kèm vào tiêu đề");
   }
 });
 
@@ -29,7 +29,7 @@ const isAdmin = asyncHandler(async (req, res, next) => {
   const adminUser = await User.findOne({ email });
 
   if (adminUser.role !== "admin") {
-    throw new Error("Your are not an admin");
+    throw new Error("Bạn không phải là admin");
   } else {
     next();
   }
