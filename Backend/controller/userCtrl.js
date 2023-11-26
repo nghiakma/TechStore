@@ -6,6 +6,8 @@ const validateMongoDbId = require("../utils/validateMongoDbId");
 const { generateRefreshToken } = require("../config/refreshtoken");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
+const sendEmail = require("./emailCtrl");
+
 // Tạo user ----------------------------------------------
 
 const createUser = asyncHandler(async (req, res) => {
@@ -217,7 +219,7 @@ const deleteaUser = asyncHandler(async (req, res) => {
     }
   });
   
-  const blockUser = asyncHandler(async (req, res) => {
+const blockUser = asyncHandler(async (req, res) => {
     const { id } = req.params;
     validateMongoDbId(id);
   
@@ -237,7 +239,7 @@ const deleteaUser = asyncHandler(async (req, res) => {
     }
   });
   
-  const unblockUser = asyncHandler(async (req, res) => {
+const unblockUser = asyncHandler(async (req, res) => {
     const { id } = req.params;
     validateMongoDbId(id);
   
@@ -259,6 +261,60 @@ const deleteaUser = asyncHandler(async (req, res) => {
     }
   });
 
+const updatePassword = asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+    const { password } = req.body;
+    validateMongoDbId(_id);
+    const user = await User.findById(_id);
+    if (password) {
+      user.password = password;
+      const updatedPassword = await user.save();
+      res.json(updatedPassword);
+    } else {
+      res.json(user);
+    }
+  });
+  
+const forgotPasswordToken = asyncHandler(async (req, res) => {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) throw new Error("Người dùng không tìm thấy với email này");
+    try {
+      const token = await user.createPasswordResetToken();
+  
+      await user.save();
+      console.log(token);
+      const resetURL = `Xin chào, Vui lòng theo liên kết này để đặt lại mật khẩu của bạn. Liên kết này có hiệu lực trong vòng 10 phút kể từ bây giờ. <a href='http://localhost:5000/api/user/reset-password/${token}'>Nhấp vào đây</>`;
+  
+      const data = {
+        to: email,
+        text: "Xin chào",
+        subject: "Liên kết quên mật khẩu",
+        htm: resetURL,
+      };
+      sendEmail(data);
+      res.json(token);
+    } catch (error) {
+      throw new Error(error);
+    }
+  });
+  
+const resetPassword = asyncHandler(async (req, res) => {
+    const { password } = req.body;
+    const { token } = req.params;
+    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+    const user = await User.findOne({
+      passwordResetToken: hashedToken,
+      passwordResetExpires: { $gt: Date.now() },
+    });
+    if (!user) throw new Error(" Token hết hạn, vui lòng thử lại sau");
+    user.password = password;
+    user.passwordResetToken = undefined;
+    user.passwordResetExpires = undefined;
+    await user.save();
+    res.json(user);
+  });
+
 module.exports = {
     createUser,
     loginUserCtrl,
@@ -273,5 +329,8 @@ module.exports = {
     updatedUser,
     blockUser,
     unblockUser,
+    updatePassword,
+    forgotPasswordToken,
+    resetPassword,
 };
   
