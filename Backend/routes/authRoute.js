@@ -14,6 +14,7 @@ const {
     updatePassword,
     forgotPasswordToken,
     resetPassword,
+    getWishlist
 } = require("../controller/userCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 
@@ -34,6 +35,7 @@ router.get("/:id", authMiddleware, isAdmin, getaUser);
 router.post("/forgot-password-token", forgotPasswordToken);
 router.put("/reset-password/:token", resetPassword);
 router.put("/password", authMiddleware, updatePassword);
+router.get("/wishlist", authMiddleware, getWishlist);
 
 module.exports = router;
 
