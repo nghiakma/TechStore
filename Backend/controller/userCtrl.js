@@ -404,6 +404,91 @@ const updateProductQuantityFromCart = asyncHandler(async (req, res) => {
     }
   });
 
+const createOrder = asyncHandler(async (req, res) => {
+    const {
+      shippingInfo,
+      orderItems,
+      totalPrice,
+      totalPriceAfterDiscount,
+      paymentInfo,
+    } = req.body;
+    const { _id } = req.user;
+    try {
+      const order = await Order.create({
+        shippingInfo,
+        orderItems,
+        totalPrice,
+        totalPriceAfterDiscount,
+        paymentInfo,
+        user: _id,
+      });
+      res.json({
+        order,
+        success: true,
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  });
+  
+const getMyOrders = asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+    try {
+      const orders = await Order.find({ user: _id })
+        .populate("user")
+        .populate("orderItems.product")
+        .populate("orderItems.color");
+      res.json({
+        orders,
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  });
+  
+const getAllOrders = asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+    try {
+      const orders = await Order.find().populate("user");
+      // .populate("orderItems.product")
+      // .populate("orderItems.color");
+      res.json({
+        orders,
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  });
+  
+const getsingleOrder = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    try {
+      const orders = await Order.findOne({ _id: id })
+        .populate("user")
+        .populate("orderItems.product")
+        .populate("orderItems.color");
+      res.json({
+        orders,
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  });
+  
+const updateOrder = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    try {
+      const orders = await Order.findById(id);
+      orders.orderStatus = req.body.status;
+      await orders.save();
+      res.json({
+        orders,
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  });
+
 module.exports = {
     createUser,
     loginUserCtrl,
@@ -426,6 +511,11 @@ module.exports = {
     getUserCart,
     emptyCart,
     removeProductFromCart,
-    updateProductQuantityFromCart
+    updateProductQuantityFromCart,
+    createOrder,
+    getMyOrders,
+    getAllOrders,
+    getsingleOrder,
+    updateOrder,
 };
   

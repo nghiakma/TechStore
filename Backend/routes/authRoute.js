@@ -19,7 +19,12 @@ const {
     getUserCart,
     emptyCart,
     removeProductFromCart,
-    updateProductQuantityFromCart
+    updateProductQuantityFromCart,
+    createOrder,
+    getMyOrders,
+    getAllOrders,
+    getsingleOrder,
+    updateOrder,
 } = require("../controller/userCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 
@@ -54,6 +59,11 @@ router.delete(
     authMiddleware,
     updateProductQuantityFromCart
   );
-  
+router.post("/cart/create-order", authMiddleware, createOrder);
+router.get("/getmyorders", authMiddleware, getMyOrders);
+router.get("/getallorders", authMiddleware, isAdmin, getAllOrders);
+router.get("/getaOrder/:id", authMiddleware, isAdmin, getsingleOrder);
+router.put("/updateOrder/:id", authMiddleware, isAdmin, updateOrder);
+
 module.exports = router;
 
