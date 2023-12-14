@@ -10,7 +10,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const authRouter = require("./routes/authRoute");
 const colorRouter = require("./routes/colorRoute");
-
+const brandRouter = require("./routes/brandRoute");
 dbConnect();
 app.use(morgan("dev"));
 app.use(cors());
@@ -20,6 +20,7 @@ app.use(cookieParser());
 
 app.use("/api/user", authRouter);
 app.use("/api/color", colorRouter);
+app.use("/api/brand", brandRouter);
 
 app.use(notFound);
 app.use(errorHandler);
