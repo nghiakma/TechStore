@@ -11,6 +11,8 @@ const cors = require("cors");
 const authRouter = require("./routes/authRoute");
 const colorRouter = require("./routes/colorRoute");
 const brandRouter = require("./routes/brandRoute");
+const couponRouter = require("./routes/couponRoute");
+
 dbConnect();
 app.use(morgan("dev"));
 app.use(cors());
@@ -21,6 +23,7 @@ app.use(cookieParser());
 app.use("/api/user", authRouter);
 app.use("/api/color", colorRouter);
 app.use("/api/brand", brandRouter);
+app.use("/api/coupon", couponRouter);
 
 app.use(notFound);
 app.use(errorHandler);
