@@ -1,6 +1,6 @@
-const mongoose = require("mongoose"); // Erase if already required
+const mongoose = require("mongoose"); 
 
-// Declare the Schema of the Mongo model
+
 var cartSchema = new mongoose.Schema(
   {
     userId: {
@@ -29,5 +29,5 @@ var cartSchema = new mongoose.Schema(
   }
 );
 
-//Export the model
+
 module.exports = mongoose.model("Cart", cartSchema);
