@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import { OpenRoutes } from "./routing/OpenRoutes";
 import { PrivateRoutes } from "./routing/PrivateRoutes";
-
+import MainLayout from "./components/MainLayout";
 function App() {
   return (
     <Router>
@@ -16,7 +16,16 @@ function App() {
             </OpenRoutes>
           }
         />
-        
+          {/* <Route path="/reset-password" element={<Resetpassword />} />
+        <Route path="/forgot-password" element={<Forgotpassword />} /> */}
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoutes>
+              <MainLayout />
+            </PrivateRoutes>
+          }
+        ></Route>
       </Routes>
     </Router>
   );
