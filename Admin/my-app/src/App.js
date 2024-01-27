@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import { OpenRoutes } from "./routing/OpenRoutes";
 import { PrivateRoutes } from "./routing/PrivateRoutes";
 import MainLayout from "./components/MainLayout";
+import Customers from "./pages/Customers";
 function App() {
   return (
     <Router>
@@ -25,7 +26,10 @@ function App() {
               <MainLayout />
             </PrivateRoutes>
           }
-        ></Route>
+        >
+         
+         <Route path="customers" element={<Customers />} />
+        </Route>
       </Routes>
     </Router>
   );
