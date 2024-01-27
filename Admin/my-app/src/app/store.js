@@ -8,8 +8,8 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     customer: customerReducer,
-    pCategoryReducer,
-    uploadReducer,
+    pCategory: pCategoryReducer,
+    upload: uploadReducer,
     brand: brandReducer,
   },
 });
