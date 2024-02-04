@@ -13,6 +13,8 @@ import Colorlist from "./pages/Colotlist";
 import Addcolor from "./pages/Addcolor";
 import Couponlist from "./pages/Couponlist";
 import AddCoupon from "./pages/AddCoupon";
+import Productlist from "./pages/Productlist";
+import Addproduct from "./pages/Addproduct";
 function App() {
   return (
     <Router>
@@ -49,6 +51,9 @@ function App() {
           <Route path="coupon-list" element={<Couponlist />} />
           <Route path="coupon" element={<AddCoupon />} />
           <Route path="coupon/:id" element={<AddCoupon />} />
+          <Route path="list-product" element={<Productlist />} />
+          <Route path="product" element={<Addproduct />} />
+          <Route path="product/:id" element={<Addproduct />} />
         </Route>
       </Routes>
     </Router>
