@@ -18,22 +18,22 @@ const columns = [
   },
 
   {
-    title: "Name",
+    title: "Tên",
     dataIndex: "name",
     sorter: (a, b) => a.name.length - b.name.length,
   },
   {
-    title: "Discount",
+    title: "Giảm",
     dataIndex: "discount",
     sorter: (a, b) => a.discount - b.discount,
   },
   {
-    title: "Expiry",
+    title: "Ngày hết hạn",
     dataIndex: "expiry",
     sorter: (a, b) => a.name.length - b.name.length,
   },
   {
-    title: "Action",
+    title: "Hành động",
     dataIndex: "action",
   },
 ];

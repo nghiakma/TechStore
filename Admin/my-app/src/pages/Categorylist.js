@@ -17,13 +17,13 @@ const columns = [
     dataIndex: "key",
   },
   {
-    title: "Name",
+    title: "Tên",
     dataIndex: "name",
     sorter: (a, b) => a.name.length - b.name.length,
   },
 
   {
-    title: "Action",
+    title: "Hành động",
     dataIndex: "action",
   },
 ];
@@ -77,7 +77,7 @@ const Categorylist = () => {
   };
   return (
     <div>
-      <h3 className="mb-4 title">Product Categories</h3>
+      <h3 className="mb-4 title">Danh mục sản phẩm</h3>
       <div>
         <Table columns={columns} dataSource={data1} />
       </div>
@@ -87,7 +87,7 @@ const Categorylist = () => {
         performAction={() => {
           deleteCategory(pCatId);
         }}
-        title="Are you sure you want to delete this Product Category?"
+        title="Bạn có muốn xóa danh mục sản phẩm này không?"
       />
     </div>
   );
