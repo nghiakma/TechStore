@@ -5,6 +5,7 @@ import pCategoryReducer from "../features/pcategory/pcategorySlice";
 import uploadReducer from "../features/upload/uploadSlice";
 import brandReducer from "../features/brand/brandSlice";
 import colorReducer from "../features/color/colorSlice";
+import couponReducer from "../features/coupon/couponSlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -13,5 +14,6 @@ export const store = configureStore({
     upload: uploadReducer,
     brand: brandReducer,
     color: colorReducer,
+    coupon: couponReducer,
   },
 });
