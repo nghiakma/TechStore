@@ -17,5 +17,6 @@ export const store = configureStore({
     color: colorReducer,
     coupon: couponReducer,
     product: productReducer,
+    enquiry: enquiryReducer,
   },
 });

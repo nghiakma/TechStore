@@ -15,6 +15,10 @@ import Couponlist from "./pages/Couponlist";
 import AddCoupon from "./pages/AddCoupon";
 import Productlist from "./pages/Productlist";
 import Addproduct from "./pages/Addproduct";
+import ViewEnq from "./pages/ViewEnq";
+import ViewOrder from "./pages/ViewOrder";
+import Orders from "./pages/Orders";
+import Enquiries from "./pages/Enquiries";
 function App() {
   return (
     <Router>
@@ -37,7 +41,10 @@ function App() {
             </PrivateRoutes>
           }
         >
-         
+            <Route path="orders" element={<Orders />} />
+            <Route path="order/:id" element={<ViewOrder />} />
+          <Route path="enquiries" element={<Enquiries />} />
+          <Route path="enquiries/:id" element={<ViewEnq />} />
          <Route path="customers" element={<Customers />} />
          <Route path="list-brand" element={<Brandlist />} />
           <Route path="brand" element={<Addbrand />} />
