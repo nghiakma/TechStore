@@ -7,6 +7,7 @@ import brandReducer from "../features/brand/brandSlice";
 import colorReducer from "../features/color/colorSlice";
 import couponReducer from "../features/coupon/couponSlice";
 import productReducer from "../features/product/productSlice";
+import enquiryReducer from "../features/enquiry/enquirySlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
