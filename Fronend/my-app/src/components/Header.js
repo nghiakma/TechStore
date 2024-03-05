@@ -185,7 +185,7 @@ const Header = () => {
                     >
                       <img src={menu} alt="" />
                       <span className="me-5 d-inline-block">
-                        Shop Categories
+                         Danh mục cửa hàng
                       </span>
                     </button>
                     <ul
@@ -207,11 +207,11 @@ const Header = () => {
                 </div>
                 <div className="menu-links">
                   <div className="d-flex align-items-center gap-15">
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/product">Our Store</NavLink>
-                    <NavLink to="/my-orders">My Orders</NavLink>
-                    <NavLink to="/blogs">Blogs</NavLink>
-                    <NavLink to="/contact">Contact</NavLink>
+                    <NavLink to="/">Trang chủ</NavLink>
+                    <NavLink to="/product">Cửa hàng</NavLink>
+                    <NavLink to="/my-orders">Đơn hàng</NavLink>
+                    <NavLink to="/blogs">Bài viết</NavLink>
+                    <NavLink to="/contact">Liên hệ</NavLink>
                     {authState?.user !== null ? (
                       <button
                         className="border border-0 bg-trasparent text-white text-uppercase"
@@ -219,7 +219,7 @@ const Header = () => {
                         style={{ backgroundColor: "#232f3e" }}
                         onClick={handleLogout}
                       >
-                        LogOut
+                        Đăng xuất
                       </button>
                     ) : (
                       ""
