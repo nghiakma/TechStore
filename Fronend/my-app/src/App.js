@@ -8,6 +8,13 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPloicy from "./pages/RefundPloicy";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import TermAndContions from "./pages/TermAndContions";
+import { PrivateRoutes } from "./routing/PrivateRoutes";
+import { OpenRoutes } from "./routing/OpenRoutes";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Forgotpassword from "./pages/Forgotpassword";
+import Signup from "./pages/Signup";
+import Resetpassword from "./pages/Resetpassword";
 function App() {
   return (
     <>
@@ -17,6 +24,32 @@ function App() {
            <Route index element={<Home />} />
            <Route path="about" element={<About />} />
 
+           <Route
+              path="my-profile"
+              element={
+                <PrivateRoutes>
+                  <Profile />
+                </PrivateRoutes>
+              }
+            />
+           <Route
+              path="login"
+              element={
+                <OpenRoutes>
+                  <Login />
+                </OpenRoutes>
+              }
+            />
+           <Route path="forgot-password" element={<Forgotpassword />} />
+            <Route
+              path="signup"
+              element={
+                <OpenRoutes>
+                  <Signup />
+                </OpenRoutes>
+              }
+            />
+            <Route path="reset-password/:token" element={<Resetpassword />} />
            <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="refund-policy" element={<RefundPloicy />} />
             <Route path="shipping-policy" element={<ShippingPolicy />} />
