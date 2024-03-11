@@ -10,14 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../features/user/userSlice";
 
 let signUpSchema = yup.object({
-  firstname: yup.string().required("First Name is Required"),
-  lastname: yup.string().required("Last Name is Required"),
+  firstname: yup.string().required("Tên bắt buộc"),
+  lastname: yup.string().required("Tên đệm bắt buộc"),
   email: yup
     .string()
-    .required("Email is Required")
-    .email("Email Should be valid"),
-  mobile: yup.number().required().positive().integer("Mobile No is Required"),
-  password: yup.string().required("Password is Required"),
+    .required("Email bắt buộc")
+    .email("Email nên hợp lệ"),
+  mobile: yup.number().required().positive().integer("Sđt bắt buộc"),
+  password: yup.string().required("Mật khẩu bắt buộc"),
 });
 
 const Signup = () => {
@@ -52,7 +52,7 @@ const Signup = () => {
         <div className="row">
           <div className="col-12">
             <div className="auth-card">
-              <h3 className="text-center mb-3">Sign Up</h3>
+              <h3 className="text-center mb-3">Đăng ký</h3>
               <form
                 action=""
                 className="d-flex flex-column gap-15"
@@ -61,7 +61,7 @@ const Signup = () => {
                 <CustomInput
                   type="text"
                   name="firstname"
-                  placeholder="FirstName"
+                  placeholder="Tên"
                   value={formik.values.firstname}
                   onChange={formik.handleChange("firstname")}
                   onBlur={formik.handleBlur("firstname")}
@@ -71,7 +71,7 @@ const Signup = () => {
                 </div>
                 <CustomInput
                   type="text"
-                  name="lastname"
+                  name="Tên đệm"
                   placeholder="LastName"
                   value={formik.values.lastname}
                   onChange={formik.handleChange("lastname")}
@@ -94,7 +94,7 @@ const Signup = () => {
                 <CustomInput
                   type="tel"
                   name="mobile"
-                  placeholder="Mobile Number"
+                  placeholder="SĐT"
                   value={formik.values.mobile}
                   onChange={formik.handleChange("mobile")}
                   onBlur={formik.handleBlur("mobile")}
@@ -105,7 +105,7 @@ const Signup = () => {
                 <CustomInput
                   type="password"
                   name="password"
-                  placeholder="Password"
+                  placeholder="Mật khẩu"
                   value={formik.values.password}
                   onChange={formik.handleChange("password")}
                   onBlur={formik.handleBlur("password")}
@@ -115,7 +115,7 @@ const Signup = () => {
                 </div>
                 <div>
                   <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
-                    <button className="button border-0">Sign Up</button>
+                    <button className="button border-0">Đăng ký</button>
                   </div>
                 </div>
               </form>

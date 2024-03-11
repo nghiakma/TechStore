@@ -15,6 +15,8 @@ import Profile from "./pages/Profile";
 import Forgotpassword from "./pages/Forgotpassword";
 import Signup from "./pages/Signup";
 import Resetpassword from "./pages/Resetpassword";
+import Contact from "./pages/Contact";
+import OurStore from "./pages/OurStore";
 function App() {
   return (
     <>
@@ -23,7 +25,8 @@ function App() {
           <Route path="/" element={<Layout />}>
            <Route index element={<Home />} />
            <Route path="about" element={<About />} />
-
+           <Route path="contact" element={<Contact />} />
+           <Route path="product" element={<OurStore />} />
            <Route
               path="my-profile"
               element={

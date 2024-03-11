@@ -8,13 +8,13 @@ import { updateProfile } from "../features/user/userSlice";
 import { FiEdit } from "react-icons/fi";
 
 let profileSchema = yup.object({
-  firstname: yup.string().required("First Name is Required"),
-  lastname: yup.string().required("Last Name is Required"),
+  firstname: yup.string().required("Tên bắt buộc"),
+  lastname: yup.string().required("Tên đệm bắt buộc"),
   email: yup
     .string()
-    .required("Email is Required")
-    .email("Email Should be valid"),
-  mobile: yup.number().required().positive().integer("Mobile No is Required"),
+    .required("Email bắt buộc")
+    .email("Email nên hợp lệ"),
+  mobile: yup.number().required().positive().integer("Sđt bắt buộc"),
 });
 
 const Profile = () => {
@@ -64,7 +64,7 @@ const Profile = () => {
               <div className="mb-3">
                 <div className="mb-3">
                   <label htmlFor="example1" className="form-label">
-                    First Name
+                    Tên
                   </label>
                   <input
                     type="text"
@@ -82,7 +82,7 @@ const Profile = () => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="example2" className="form-label">
-                    Last Name
+                    Tên đệm
                   </label>
                   <input
                     type="text"
@@ -99,7 +99,7 @@ const Profile = () => {
                   </div>
                 </div>
                 <label htmlFor="exampleInputEmail1" className="form-label">
-                  Email address
+                  ĐỊa chỉ email
                 </label>
                 <input
                   type="email"
@@ -117,7 +117,7 @@ const Profile = () => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="example3" className="form-label">
-                    Mobile No
+                    SĐT
                   </label>
                   <input
                     type="number"
@@ -137,7 +137,7 @@ const Profile = () => {
 
               {edit === false && (
                 <button type="submit" className="btn btn-primary">
-                  Save
+                  Lưu
                 </button>
               )}
             </form>
