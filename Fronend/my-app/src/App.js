@@ -17,6 +17,7 @@ import Signup from "./pages/Signup";
 import Resetpassword from "./pages/Resetpassword";
 import Contact from "./pages/Contact";
 import OurStore from "./pages/OurStore";
+import SingleProduct from "./pages/SingleProduct";
 function App() {
   return (
     <>
@@ -27,6 +28,7 @@ function App() {
            <Route path="about" element={<About />} />
            <Route path="contact" element={<Contact />} />
            <Route path="product" element={<OurStore />} />
+           <Route path="product/:id" element={<SingleProduct />} />
            <Route
               path="my-profile"
               element={
