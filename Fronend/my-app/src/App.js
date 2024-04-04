@@ -18,6 +18,7 @@ import Resetpassword from "./pages/Resetpassword";
 import Contact from "./pages/Contact";
 import OurStore from "./pages/OurStore";
 import SingleProduct from "./pages/SingleProduct";
+import Cart from "./pages/Cart";
 function App() {
   return (
     <>
@@ -34,6 +35,14 @@ function App() {
               element={
                 <PrivateRoutes>
                   <Profile />
+                </PrivateRoutes>
+              }
+            />
+             <Route
+              path="cart"
+              element={
+                <PrivateRoutes>
+                  <Cart />
                 </PrivateRoutes>
               }
             />
