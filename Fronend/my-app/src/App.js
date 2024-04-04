@@ -19,6 +19,7 @@ import Contact from "./pages/Contact";
 import OurStore from "./pages/OurStore";
 import SingleProduct from "./pages/SingleProduct";
 import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
 function App() {
   return (
     <>
@@ -43,6 +44,14 @@ function App() {
               element={
                 <PrivateRoutes>
                   <Cart />
+                </PrivateRoutes>
+              }
+            />
+              <Route
+              path="wishlist"
+              element={
+                <PrivateRoutes>
+                  <Wishlist />
                 </PrivateRoutes>
               }
             />
